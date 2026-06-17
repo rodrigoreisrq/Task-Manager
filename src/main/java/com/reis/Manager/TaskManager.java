@@ -1,14 +1,40 @@
 package com.reis.Manager;
 
+import com.reis.taskRepository.TaskRepository;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TaskManager {
     private ArrayList<Tasks> tasks = new ArrayList<>();
+    private TaskRepository repository = new TaskRepository();
+
+    public TaskManager(){
+        try{
+            tasks = repository.carregarTasks();
+
+        }catch (IOException e){
+            tasks = new ArrayList<>();
+        }
+        int maiorId = 0;
+        for(Tasks task : tasks){
+            if(task.getId()>maiorId){
+                maiorId = task.getId();
+            }
+            Tasks.setContadorId(maiorId + 1);
+        }
 
 
+
+    }
     public void adicionarTask(String nome, String descricao, String data){
         Tasks task = new Tasks(nome, descricao, data);
         tasks.add(task);
+        try{
+            repository.salvar(tasks);
+        }catch (IOException e){
+            System.out.println("Erro ao salvar" + e.getMessage());
+        }
     }
     public void deletarTask(int id){
         //tasks.remove(id);
@@ -18,6 +44,11 @@ public class TaskManager {
 //            }
 //        }
         tasks.removeIf(task -> task.getId() == id);
+        try{
+            repository.salvar(tasks);
+        }catch (IOException e){
+            System.out.println("Erro ao salvar" + e.getMessage());
+        }
    }
    public void editarTask(int id, String nome, String descricao, String data){
         for(Tasks task : tasks){
@@ -25,15 +56,26 @@ public class TaskManager {
                 task.setNome(nome);
                 task.setDescricao(descricao);
                 task.setData(data);
+
             }
-        }
+
+        } try{
+           repository.salvar(tasks);
+       }catch (IOException e){
+           System.out.println("Erro ao salvar" + e.getMessage());
+       }
    }
-   public <status> void marcarStatus(int id, Status status){
+   public void marcarStatus(int id, Status status){
         for(Tasks task : tasks){
             if(task.getId() == id){
                 task.setStatus(status);
             }
         }
+       try{
+           repository.salvar(tasks);
+       }catch (IOException e){
+           System.out.println("Erro ao salvar" + e.getMessage());
+       }
 
    }
    public void listarTodos(){

@@ -30,9 +30,9 @@ public class Main {
             opcao = input.nextInt();
             switch (opcao) {
                 case 1:
+                    input.nextLine();
                     System.out.println("Nome da tarefa:");
                     String nome = input.nextLine();
-                    input.nextLine();
                     System.out.println("Descrição:");
                     String descricao = input.nextLine();
                     System.out.println("Data:");
@@ -40,6 +40,7 @@ public class Main {
                     manager.adicionarTask(nome, descricao, data);
                     break;
                 case 2:
+                    input.nextLine();
                     System.out.println("Id da tarefa: ");
                     int id = input.nextInt();
                     System.out.println("Faça as alterações \n Nome da tarefa: ");
@@ -62,7 +63,7 @@ public class Main {
                     System.out.println("1.Não iniciado\n2. Em progresso\n3. Finalizado");
                     int opcaoStatus = input.nextInt();
                     input.nextLine();
-                    Status status = switch(opcaoStatus){
+                    Status status = switch (opcaoStatus) {
                         case 1 -> Status.NAO_INICIADO;
                         case 2 -> Status.EM_PROGRESSO;
                         case 3 -> Status.FINALIZADO;
@@ -82,7 +83,7 @@ public class Main {
                     System.out.println("Digite o status que deseja buscar: ");
                     int opcaoBusca = input.nextInt();
                     input.nextLine();
-                    Status statusBuscado = switch (opcaoBusca){
+                    Status statusBuscado = switch (opcaoBusca) {
                         case 1 -> Status.NAO_INICIADO;
                         case 2 -> Status.EM_PROGRESSO;
                         case 3 -> Status.FINALIZADO;
@@ -94,7 +95,7 @@ public class Main {
 
 
             }
-            if(opcao == 0){
+            if (opcao == 0) {
                 System.out.println("Fechando...");
                 break;
             }
@@ -102,7 +103,7 @@ public class Main {
 
 
     }
-    }
+}
 
 
 

@@ -20,7 +20,7 @@ public class Tasks {
 
     @Override
     public String toString() {
-        return "ID: |" + id + "nome: |" + nome + "status: |" + status;
+        return "ID: " + id + "| nome: " + nome + " | status: " + status;
     }
 
     public String getNome() {
@@ -45,7 +45,9 @@ public class Tasks {
     public int getId(){
         return id;
     }
-
+    public static void setContadorId(int contadorId){
+        Tasks.contadorId = contadorId;
+    }
     public void setData(String data) {
         this.data = data;
     }

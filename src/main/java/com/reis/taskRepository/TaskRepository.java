@@ -24,7 +24,7 @@ public class TaskRepository {
     }
     public ArrayList<Tasks>carregarTasks() throws IOException {
         FileReader reader = new FileReader(ARQUIVO);
-        gson.fromJson(reader, new TypeToken<ArrayList<Tasks>>(){}.getType());
+        ArrayList<Tasks> tasks = gson.fromJson(reader, new TypeToken<ArrayList<Tasks>>(){}.getType());
         return tasks;
 
 
