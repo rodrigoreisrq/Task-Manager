@@ -43,7 +43,9 @@ public class Main {
                     input.nextLine();
                     System.out.println("Id da tarefa: ");
                     int id = input.nextInt();
-                    System.out.println("Faça as alterações \n Nome da tarefa: ");
+                    input.nextLine();
+                    System.out.println("Faça as alterações.");
+                    System.out.println("Nome da tarefa: ");
                     String nomeAlterado = input.nextLine();
                     System.out.println("Descrição:");
                     String descricaoAlterada = input.nextLine();
@@ -55,6 +57,7 @@ public class Main {
                     System.out.println("Id da tarefa: ");
                     int idDeletar = input.nextInt();
                     manager.deletarTask(idDeletar);
+                    System.out.println("Tarefa removida com sucesso!");
                     break;
                 case 4:
                     System.out.println("Id da tarefa: ");
