@@ -24,8 +24,6 @@ public class TaskManager {
             Tasks.setContadorId(maiorId + 1);
         }
 
-
-
     }
     public void adicionarTask(String nome, String descricao, String data){
         Tasks task = new Tasks(nome, descricao, data);
@@ -37,12 +35,7 @@ public class TaskManager {
         }
     }
     public void deletarTask(int id){
-        //tasks.remove(id);
-//        for(Tasks task : tasks){
-//            if(task.getId() == id){
-//                tasks.remove(task);
-//            }
-//        }
+
         tasks.removeIf(task -> task.getId() == id);
         try{
             repository.salvar(tasks);
